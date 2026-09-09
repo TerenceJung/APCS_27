@@ -1,6 +1,6 @@
 /*
- *	Author:  
- *  Date: 
+ *	Author:  Terence Jung
+ *  Date: 9/2/2026
 */
 
 import java.util.Scanner;
