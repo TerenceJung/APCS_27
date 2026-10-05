@@ -14,7 +14,7 @@ class starter {
 		
 		System.out.print("Pick a number between 1-1000: ");
 		int Num = sc.nextInt();
-		int random = (int)Math.random()*1001;
+		int random = (int)(Math.random()*1001);
 		if(Num == random){
 			System.out.println("You are correct!");
 		}
