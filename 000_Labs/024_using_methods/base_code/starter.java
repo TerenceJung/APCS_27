@@ -13,9 +13,65 @@ class starter {
 	static ArrayList<String> arr = new ArrayList<String>();
 
 	public static void main(String args[]) throws InterruptedException {
-		// Write your code here!
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome to Type Quest!");
+		System.out.println("It is currently" + getTime() + " and we're ready to play!");
+		System.out.println("Given a sentence, type it as fast as possible!");
+		System.out.println("------------------------------------------");
 
-		
+		boolean play = true;
+		while(play){
+			System.out.println("Would you like to: ");
+			System.out.println(" 1 - Play random");
+			System.out.println(" 2 - Play set");
+			System.out.println(" 3 - Quit");
+			System.out.println();
+			String choice = sc.nextLine();
+
+			if(choice.equals("1")){
+				System.out.println("You've chosen to randomly select a sentence.");
+				playonetwo(getSentence(), sc);
+			}
+			else if (choice.equals("2")) {
+				System.out.println("Please enter what number sentence you'd like to play:");
+				int num = sc.nextInt();
+				playonetwo(getSentence(num - 1), sc);
+			}
+			else if(choice.equals("3")){
+				play = false;
+			}
+			else{
+				System.out.println("Rerun");
+			}
+		}
+	}
+
+
+	// shows like what the sentence is, the countdown, times player, and shows what the scores are
+	public static void playonetwo(String sentence, Scanner sc) throws InterruptedException {
+		System.out.println("-----------------Your sentence is:-----------------");
+		System.out.println(sentence);
+		System.out.println("---------------------------------------------------");
+		System.out.println();
+		countdown();
+		startTimer();
+		String type = sc.nextLine();
+		double seconds = endTimer();
+ 
+		int letters = lettersInSentence(sentence);
+		int words = wordsInSentence(sentence);
+		int errors = compareSentences(sentence, type);
+ 
+		double minutes = seconds / 60.0;
+		double letterspermin = letters / minutes;
+		double wordspermin = words / minutes;
+ 
+		System.out.println("Nice job! Here is your result!");
+		System.out.println("Time: " + seconds);
+		System.out.println("Errors: " + errors + " / " + letters + " letters");
+		System.out.println(String.format("%.2f", letterspermin) + " letters per minute");
+		System.out.println(String.format("%.2f", wordspermin) + " words per minute");
+		System.out.println("------------------------------------------");
 	}
 
 	// This method returns the local current time as a String
