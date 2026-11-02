@@ -64,25 +64,40 @@ public class BankAccount {
 		isActive = a;
 	}
 	public void checkBalance() {
-    	System.out.println("Current balance: $" + balance);
+    	System.out.println("Current Account Balance: $" + balance);
 	}
 
 	public void displayAccountInfo() {
+		System.out.println("--- Account Info ---");
     	System.out.println("Account name: " + owner);
     	System.out.println("Account Number: " + AccountNumber);
     	System.out.println("Account balance: $" + balance);
     	System.out.println("Active: " + isActive);
+		System.out.println();
 	}
 
 	public void deposit(double a) {
-		balance = balance + a;
+		if(isActive == true){
+			balance = balance + a;
+			System.out.println("Deposited: $" + a);
+		}
+		if(isActive == false){
+			System.out.println("Account is closed. Cannot deposit");
+		}
 	}
 	
 	public void withdraw(double a) {
 		balance = balance - a;
+		if(balance < 0){
+			System.out.println("Insufficient funds!");
+		}
+		else{
+			System.out.println("Withdrew $" + a);
+		}
 	}
 
 	public void closeAccount() {
 		isActive = false;
+		System.out.println("Account closed for " + owner);
 	}
 }	
